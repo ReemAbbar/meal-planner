@@ -1,0 +1,22 @@
+# Root level gitignore
+node_modules/
+.env
+*.db
+.DS_Store
+
+# Unnecessary folders
+meal-planner/
+src/
+
+# Build outputs
+frontend/build/
+backend/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Documentation (optional - uncomment to exclude)
+# DEMO_MODE_GUIDE.md
+# FEATURE_UPGRADE.md
+# IMAGE_STORE_SETUP.md
