@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 interface Meal {
   id: number;
   name: string;
@@ -51,7 +53,7 @@ export const MealDetail: React.FC<MealDetailProps> = ({ meal, onClose, onOrderSu
     if (extraVeggies) customizations.push('Extra Veggies');
     
     try {
-      await axios.post('http://localhost:5000/api/orders', {
+      await axios.post(`${API_URL}/api/orders`, {
         mealId: meal.id,
         customization: customizations.join(', '),
       });

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 interface Meal {
   id: number;
   name: string;
@@ -28,7 +30,7 @@ export const NutritionEditor: React.FC<NutritionEditorProps> = ({ meal, onClose,
   const handleSave = async () => {
     setSaving(true);
     try {
-      await axios.patch(`http://localhost:5000/api/meals/${meal.id}`, {
+      await axios.patch(`${API_URL}/api/meals/${meal.id}`, {
         calories: parseInt(calories),
         protein: parseInt(protein),
         carbs: parseInt(carbs),

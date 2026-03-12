@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 interface Order {
   id: number;
   meal_id: number;
@@ -19,7 +21,7 @@ export const OrderHistory: React.FC = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/orders');
+      const res = await axios.get(`${API_URL}/api/orders`);
       setOrders(res.data);
     } catch (err) {
       console.error('Error fetching orders:', err);

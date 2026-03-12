@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { MealDetail } from './MealDetail';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 interface Meal {
   id: number;
   name: string;
@@ -28,7 +30,7 @@ export const MealList: React.FC = () => {
 
   const fetchMeals = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/meals');
+      const res = await axios.get(`${API_URL}/api/meals`);
       setMeals(res.data);
     } catch (err) {
       console.error('Error fetching meals:', err);
@@ -45,7 +47,7 @@ export const MealList: React.FC = () => {
       return;
     }
     try {
-      await axios.post('http://localhost:5000/api/meals', {
+      await axios.post(`${API_URL}/api/meals`, {
         name,
         calories: parseInt(calories),
         protein: protein ? parseInt(protein) : 0,
